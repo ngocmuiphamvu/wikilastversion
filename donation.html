@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wikipedia</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #d6e7f2;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+
+    .form-container {
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 20px 40px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        max-width: 800px;
+        width: 100%;
+        display: flex;
+        gap: 20px;
+    }
+
+    .form-left {
+        flex: 1;
+    }
+
+    .form-right {
+        flex: 1;
+        font-size: 18px;
+        color: #1a4a7b;
+        padding-top: 20px;
+    }
+
+    .form-right h3 {
+        font-weight: normal;
+    }
+
+    h2 {
+        font-size: 24px;
+        color: #333;
+        text-align: left;
+        margin-top: 0;
+    }
+
+    .input-group {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+
+    .input-group label {
+        font-size: 14px;
+        color: #333;
+        margin-bottom: 5px;
+    }
+
+    .input-group input {
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 100%;
+    }
+
+    .payment-methods {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+
+    .payment-method {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: all 0.3s;
+    }
+
+    .payment-method:hover {
+        border-color: #1a4a7b;
+    }
+
+    .selected {
+        border-color: #1a4a7b;
+        background-color: #f0f7ff;
+    }
+
+    .card-details {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .card-details input {
+        flex: 1;
+        min-width: 48%;
+    }
+
+    .donate-button {
+        display: inline-block;
+        background-color: #1a4a7b;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .donate-button:hover {
+        background-color: #145a9e;
+    }
+
+    .message {
+        font-size: 16px;
+        color: #1a4a7b;
+        line-height: 1.5;
+    }
+    /* Footer */
+.footer {
+    background-color: #001f3f;
+    color: #d9eafc;
+    padding: 20px 0;
+    text-align: center;
+    border-top: 2px solid #0d3c6d;
+    margin-top: 20px;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-logo img {
+    width: 80px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.footer-text p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #d9eafc;
+}
+
+.social-icons a {
+    font-size: 24px;
+    margin: 0 10px;
+    color: #d9eafc;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.social-icons a:hover {
+    color: #ffc107; /* Màu sáng hơn khi hover */
+}
+</style>
+  
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h1>Wikipedia</h1>
+      <img src="https://upload.wikimedia.org/wikipedia/en/8/80/Wikipedia-logo-v2.svg" alt="Wikipedia Logo">
+
+      <p align="center">Free knowledge for everyone</p>
+      <nav>
+        <ul>
+            <li><a href="./index.html">Home 🏠 </a></li>
+            <li><a href="./news.html">News 📰 </a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Law_of_cosines">Wiki 📘 </a></li>
+            <li><a href="./topic.html">Topics 📂 </a></li>
+            <li><a href="./comunity.html">Community 👥 </a></li>
+            <li><a href="./donation.html">Donation 💰 </a></li>
+            <li><a href="./contact.html">Contact 📞 </a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Wikipedia:About">About us ℹ️ </a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="header">
+        <input type="text" placeholder="Search..." id="search-bar">
+        <div class="icons">
+            <span id="bell-icon">🔔</span>
+            <span><a href="./profile.html">👤</a></span>
+            <span><a href="./start.html">⚙️</a></span>
+        </div>
+        <span class="date">Sep 29, 2024</span>
+      </header>
+      <div class="form-container">
+        <div class="form-left">
+            <h2>Contact information</h2>
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Email">
+            </div>
+            <div class="input-group">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" placeholder="Phone">
+            </div>
+    
+            <h2>Payment method</h2>
+            <div class="payment-methods">
+                <div class="payment-method selected" onclick="selectPaymentMethod(this)">💳 Card</div>
+                <div class="payment-method" onclick="selectPaymentMethod(this)">🏦 VN bank account</div>
+            </div>
+    
+            <h2>Card information</h2>
+            <div class="input-group">
+                <input type="text" placeholder="1234 1234 1234 1234" maxlength="19">
+            </div>
+            <div class="card-details">
+                <input type="text" placeholder="MM/YY" maxlength="5">
+                <input type="text" placeholder="CVC" maxlength="3">
+            </div>
+            <div class="input-group">
+                <label for="cardholder-name">Cardholder name</label>
+                <input type="text" id="cardholder-name" placeholder="Full name on card">
+            </div>
+            <div class="input-group">
+                <label for="country">Country or region</label>
+                <input type="text" id="country" placeholder="Name of country or region">
+            </div>
+            <div class="input-group">
+                <label for="donation">Donation</label>
+                <input type="number" id="donation" placeholder="Enter donation amount">
+            </div>
+            <button class="donate-button">Donate</button>
+        </div>
+    
+        <div class="form-right">
+            <h3>Your donation helps us with our development and also ... helps you with your knowledgeability</h3>
+        </div>
+    </div>
+    
+    <script>
+        function selectPaymentMethod(element) {
+            document.querySelectorAll('.payment-method').forEach(el => el.classList.remove('selected'));
+            element.classList.add('selected');
+        }
+    </script>
+    <!-- Footer -->
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/en/8/80/Wikipedia-logo-v2.svg" alt="Wikipedia Logo">
+        </div>
+        <div class="footer-text">
+            <p>© 2024 Wikipedia Clone - Made with ❤️ for educational purposes.</p>
+            <p>Follow us on:</p>
+            <div class="social-icons">
+                <a href="https://facebook.com" target="_blank">📘</a>
+                <a href="https://twitter.com" target="_blank">🐦</a>
+                <a href="https://instagram.com" target="_blank">📸</a>
+                <a href="https://linkedin.com" target="_blank">🔗</a>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

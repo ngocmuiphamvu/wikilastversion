@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wikipedia</title>
+  <link rel="stylesheet" href="style.css">
+    <!-- JavaScript -->
+  <script src="search_notification.js"></script>
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h1>Wikipedia</h1>
+      <img src="https://upload.wikimedia.org/wikipedia/en/8/80/Wikipedia-logo-v2.svg" alt="Wikipedia Logo">
+
+      <p align="center">Free knowledge for everyone</p>
+      <nav>
+        <ul>
+          <li><a href="./index.html">Home 🏠 </a></li>
+            <li><a href="./news.html">News 📰 </a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Law_of_cosines">Wiki 📘 </a></li>
+            <li><a href="./topic.html">Topics 📂 </a></li>
+            <li><a href="./comunity.html">Community 👥 </a></li>
+            <li><a href="./donation.html">Donation 💰 </a></li>
+            <li><a href="./contact.html">Contact 📞 </a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Wikipedia:About">About us ℹ️ </a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="header">
+        <div class="search-container">
+          <input type="text" class="search-input" placeholder="Tìm kiếm..." oninput="updateSuggestions()">
+          <ul class="suggestions" id="suggestions-list"></ul>
+        </div>
+        <div class="icons">
+          <span class="notification-container">
+            <!-- Biểu tượng chuông thông báo -->
+            <span id="bell-icon" onclick="toggleNotifications()">🔔</span>
+            
+            <!-- Dropdown thông báo -->
+            <span class="notification-dropdown" id="notification-dropdown">
+                <h4>Thông báo</h4>
+                <ul id="notification-list">
+                    <!-- Các thông báo sẽ được thêm vào đây bằng JavaScript -->
+                </ul>
+                <button onclick="clearNotifications()" class="clear-btn">Xóa tất cả</button>
+            </span>
+          </span>
+          <span><a href="./profile.html">👤</a></span>
+          <span><a href="./start.html">⚙️</a></span>
+        </div>
+        <span class="date">Sep 29, 2024</span>
+      </header>
+
+      <section class="breaking-news">
+    <h2>Breaking News: Bowen: West left powerless as Israel claims its biggest victory yet against Hezbollah</h2>
+    <div class="container5">
+        <div class="image">
+            <img src="image1.jpg" alt="Breaking News Image">
+        </div>
+    </div>
+      </section>
+
+      <section class="content">
+        <div class="news">
+          <img src="image2.jpg" alt="Crew-9 astronauts image">
+          <p>Crew-9 astronauts head toward space station as SpaceX reports rocket anomaly</p>
+        </div>
+        
+        <div class="sidebar-right">
+          <h3>Did you know?</h3>
+          <p><strong>Law of Cosines</strong><br>In trigonometry, the law of cosines (also known as the cosine formula or cosine rule) relates the lengths of the sides of a triangle to the cosine of one of the angles...</p>
+          <img src="image3.png" alt="Law of cosines" width="300">
+          <hr>
+          <br>
+          <p><strong>Augustin-Louis Cauchy</strong><br>Augustin-Louis Cauchy is a French mathematician born on August 21, 1789...</p>
+          <img src="image4.png" alt="Augustin-Louis Cauchy" width="300">
+        </div>
+      </section>
+    </main>
+  </div>
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/en/8/80/Wikipedia-logo-v2.svg" alt="Wikipedia Logo">
+        </div>
+        <div class="footer-text">
+            <p>© 2024 Wikipedia Clone - Made with ❤️ for educational purposes.</p>
+            <p>Follow us on:</p>
+            <div class="social-icons">
+                <a href="https://facebook.com" target="_blank">📘</a>
+                <a href="https://twitter.com" target="_blank">🐦</a>
+                <a href="https://instagram.com" target="_blank">📸</a>
+                <a href="https://linkedin.com" target="_blank">🔗</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

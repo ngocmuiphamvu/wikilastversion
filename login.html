@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wikipedia Login Page</title>
+  <style>
+    /* Resetting default styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #d9eafc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #333;
+    }
+
+    .container {
+      display: flex;
+      width: 80%;
+      max-width: 800px;
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Left Side: Social Login Options */
+    .left-section {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      border-right: 1px solid #ddd;
+    }
+
+    .left-section h1 {
+      font-size: 24px;
+      color: #2b4a9b;
+      margin-bottom: 5px;
+    }
+
+    .left-section p {
+      font-size: 14px;
+      color: #3b5998;
+      margin-bottom: 30px;
+    }
+
+    .login-option {
+      width: 80%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 16px;
+      color: white;
+      margin-bottom: 15px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      text-decoration: none;
+      text-align: center;
+    }
+
+    .google {
+      background-color: #db4437;
+    }
+
+    .google:hover {
+      background-color: #c23b2a;
+    }
+
+    .facebook {
+      background-color: #4267b2;
+    }
+
+    .facebook:hover {
+      background-color: #37599e;
+    }
+
+    .left-section .signup-text {
+      font-size: 14px;
+      color: #666;
+      margin-top: 20px;
+    }
+
+    .left-section .signup-text a {
+      color: #f39c12;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .left-section .signup-text a:hover {
+      text-decoration: underline;
+    }
+
+    /* Right Side: Traditional Login Form */
+    .right-section {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .right-section img {
+      width: 40px;
+      margin-bottom: 20px;
+    }
+
+    .right-section h2 {
+      font-size: 18px;
+      color: #2b4a9b;
+      margin-bottom: 10px;
+    }
+
+    .right-section form {
+      width: 100%;
+      max-width: 280px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .right-section label {
+      font-size: 14px;
+      margin-bottom: 5px;
+      color: #333;
+    }
+
+    .right-section input {
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+
+    .right-section input:focus {
+      border-color: #2b4a9b;
+    }
+
+    .forgot-password {
+      font-size: 12px;
+      color: #f39c12;
+      text-align: right;
+      text-decoration: none;
+      margin-bottom: 15px;
+    }
+
+    .forgot-password:hover {
+      text-decoration: underline;
+    }
+
+    .login-button {
+      padding: 10px;
+      background-color: #2b4a9b;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .login-button:hover {
+      background-color: #1e3481;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Left Section for Social Logins -->
+    <div class="left-section">
+      <h1>Wikipedia</h1>
+      <p>Free knowledge for everyone</p>
+      <a href="./chosetopic.html" class="login-option google">
+        Sign in with Google
+      </a>
+      <a href="./chosetopic.html" class="login-option facebook">
+        Sign in with Facebook
+      </a>
+      <div class="signup-text">
+        Don’t have an account? <a href="./chosetopic.html">Sign up</a>
+      </div>
+    </div>
+
+    <!-- Right Section for Traditional Login -->
+    <div class="right-section">
+      <img src="https://upload.wikimedia.org/wikipedia/en/8/80/Wikipedia-logo-v2.svg" alt="Wikipedia Logo">
+      <form>
+        <label for="email">Gmail</label>
+        <input type="email" id="email" name="email" placeholder="Your email" required>
+        
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Your password" required>
+
+        <a href="#" class="forgot-password">Forget password</a>
+
+        <button type="submit" class="login-button">Login</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

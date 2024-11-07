@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wikipedia</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      .slider {
+        width: 100%;
+        height: 500px;
+        overflow: hidden;
+      }
+
+      figure {
+        position: relative;
+        left: 0;
+        width: 400%; /* width dikali slide */
+        animation: 10s slide infinite;
+      }
+
+      .slide {
+        position: relative;
+        width: 25%; /* width dibagi slide */
+        float: left;
+      }
+
+      .slide h1 {
+        position: absolute;
+        font-size: 3em;
+        width: 100%;
+        text-align: center;
+        margin-top: 50px;
+        color: white;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+      }
+
+      .slide img {
+        width: 100%;
+        height: 500px;
+      }
+
+      @keyframes slide {
+        0% {
+          left: 0;
+        }
+        10% {
+          left: 0;
+        }
+        20% {
+          left: -100%;
+        }
+        30% {
+          left: -100%;
+        }
+        40% {
+          left: -200%;
+        }
+        50% {
+          left: -200%;
+        }
+        55% {
+          left: -300%;
+        }
+        65% {
+          left: -300%;
+        }
+        66% {
+          left: -200%;
+        }
+        74% {
+          left: -200%;
+        }
+        75% {
+          left: -100%;
+        }
+        85% {
+          left: -100%;
+        }
+        90% {
+          left: 0;
+        }
+        1000% {
+          left: 0;
+        }
+      }
+      /* Cấu trúc cho phần Did you know */
+      .did-you-know {
+        background-color: #f5f8fc; /* Nền nhẹ */
+        border: 1px solid #dde2e8; /* Đường viền nhẹ */
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
+      }
+
+      /* Hiệu ứng hover cho Did you know */
+      .did-you-know:hover {
+        transform: translateY(-5px); /* Phóng to nhẹ */
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15); /* Đổ bóng rõ hơn */
+      }
+
+      .did-you-know h3 {
+        font-size: 20px;
+        color: #3b5998;
+        margin-bottom: 10px;
+      }
+
+      .did-you-know p {
+        font-size: 14px;
+        color: #555;
+        line-height: 1.6;
+        margin-bottom: 15px;
+      }
+
+      .did-you-know img {
+        width: 100%;
+        max-width: 300px;
+        border-radius: 8px;
+        margin-top: 10px;
+      }
+      .main-news {
+        background-color: #f5f8fc; /* Nền nhẹ */
+        border-radius: 12px;
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .main-news:hover {
+        transform: translateY(-5px); /* Hiệu ứng hover nâng khung */
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Đổ bóng mạnh hơn khi hover */
+      }
+
+      .main-news img {
+        width: 100%; /* Chiếm toàn bộ chiều rộng khung */
+        max-width: 400px; /* Giới hạn chiều rộng tối đa */
+        height: auto;
+        border-radius: 10px; /* Bo góc nhẹ cho ảnh */
+        margin-bottom: 15px;
+      }
+
+      .main-news p {
+        font-size: 22px; /* Kích thước chữ lớn hơn cho tiêu đề */
+        line-height: 1.5;
+        color: #333;
+        font-weight: bold;
+        margin-top: 10px;
+        max-width: 600px;
+      }
+      /* Footer */
+      .footer {
+        background-color: #001f3f;
+        color: #d9eafc;
+        padding: 20px 0;
+        text-align: center;
+        border-top: 2px solid #0d3c6d;
+        margin-top: 20px;
+      }
+
+      .footer-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .footer-logo img {
+        width: 80px;
+        height: auto;
+        margin-bottom: 10px;
+      }
+
+      .footer-text p {
+        margin: 5px 0;
+        font-size: 14px;
+        color: #d9eafc;
+      }
+
+      .social-icons a {
+        font-size: 24px;
+        margin: 0 10px;
+        color: #d9eafc;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .social-icons a:hover {
+        color: #ffc107; /* Màu sáng hơn khi hover */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <h1>Wikipedia</h1>
+        <img
+          src="https://upload.wikimedia.org/wikipedia/en/8/80/Wikipedia-logo-v2.svg"
+          alt="Wikipedia Logo"
+        />
+
+        <p align="center">Free knowledge for everyone</p>
+        <nav>
+          <ul>
+            <li><a href="./index.html">Home 🏠 </a></li>
+            <li><a href="./news.html">News 📰 </a></li>
+            <li>
+              <a href="https://en.wikipedia.org/wiki/Law_of_cosines"
+                >Wiki 📘
+              </a>
+            </li>
+            <li><a href="./topic.html">Topics 📂 </a></li>
+            <li><a href="./comunity.html">Community 👥 </a></li>
+            <li><a href="./donation.html">Donation 💰 </a></li>
+            <li><a href="./contact.html">Contact 📞 </a></li>
+            <li>
+              <a href="https://en.wikipedia.org/wiki/Wikipedia:About"
+                >About us ℹ️
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <header class="header">
+          <input type="text" placeholder="Search..." id="search-bar" />
+          <div class="icons">
+            <span id="bell-icon">🔔</span>
+            <span><a href="./profile.html">👤</a></span>
+            <span><a href="./start.html">⚙️</a></span>
+          </div>
+          <span class="date">Sep 29, 2024</span>
+        </header>
+
+        <div class="slider">
+          <figure>
+            <div class="slide">
+              <h1>Breaking news</h1>
+              <img src="image1.jpg" alt="" />
+            </div>
+            <div class="slide">
+              <h1>Breaking news</h1>
+              <img src="image.webp" alt="" />
+            </div>
+            <div class="slide">
+              <h1>Breaking news</h1>
+              <img src="image3.png" alt="" />
+            </div>
+            <div class="slide">
+              <h1>Breaking news</h1>
+              <img src="image2.jpg" alt="" />
+            </div>
+          </figure>
+        </div>
+
+        <section class="content">
+          <div class="main-news">
+            <img src="image1.jpg" alt="Crew-9 astronauts image" />
+            <p>
+              Crew-9 astronauts head toward space station as SpaceX reports
+              rocket anomaly
+            </p>
+          </div>
+
+          <div class="did-you-know">
+            <h3>Did you know?</h3>
+            <p>
+              <strong>Law of Cosines</strong><br />In trigonometry, the law of
+              cosines (also known as the cosine formula or cosine rule) relates
+              the lengths of the sides of a triangle to the cosine of one of the
+              angles...
+            </p>
+            <img src="image3.png" alt="Law of Cosines" />
+            <hr />
+            <p>
+              <strong>Augustin-Louis Cauchy</strong><br />Augustin-Louis Cauchy
+              is a French mathematician born on August 21, 1789...
+            </p>
+            <img src="image4.png" alt="Augustin-Louis Cauchy" />
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/en/8/80/Wikipedia-logo-v2.svg"
+            alt="Wikipedia Logo"
+          />
+        </div>
+        <div class="footer-text">
+          <p>© 2024 Wikipedia Clone - Made with ❤️ for educational purposes.</p>
+          <p>Follow us on:</p>
+          <div class="social-icons">
+            <a href="https://facebook.com" target="_blank">📘</a>
+            <a href="https://twitter.com" target="_blank">🐦</a>
+            <a href="https://instagram.com" target="_blank">📸</a>
+            <a href="https://linkedin.com" target="_blank">🔗</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

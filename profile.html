@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wikipedia</title>
+  <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f3f4f6;
+        color: #333;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px;
+    }
+
+    .profile-container {
+        max-width: 1200px; /* Tăng chiều rộng tối đa để chiếm đủ không gian */
+        width: 100%;
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        display: grid;
+        grid-template-columns: 1fr 3fr; /* Chia tỷ lệ hợp lý giữa sidebar và content */
+        gap: 20px;
+    }
+
+    /* Sidebar cho thông tin cá nhân */
+    .sidebar {
+        background-color: #d0e4f7;
+        padding: 30px;
+        border-radius: 16px;
+        text-align: center;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Căn giữa các phần tử con theo chiều ngang */
+    }
+
+    .profile-image {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background-color: #cfcfcf;
+        margin-bottom: 20px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 14px;
+        color: #888;
+    }
+
+    .username {
+        font-size: 26px;
+        color: #3b5998;
+        font-weight: bold;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    .personal-info {
+        font-size: 15px;
+        color: #555;
+        line-height: 1.8;
+        text-align: left;
+        width: 100%; /* Đảm bảo các phần tử con chiếm hết chiều rộng */
+    }
+
+    .personal-info p {
+        font-weight: bold;
+        color: #3b5998;
+        margin-bottom: 5px;
+    }
+
+    .personal-info ul {
+        padding-left: 20px;
+        list-style-type: disc;
+        margin-bottom: 15px;
+    }
+
+    .description {
+        margin-top: 15px;
+        padding: 12px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        font-size: 14px;
+        color: #666;
+        resize: none;
+        width: 100%;
+        height: 80px;
+        border: 1px solid #ddd;
+    }
+
+    .description::placeholder {
+        color: #bbb;
+        font-style: italic;
+    }
+
+    .edit-btn {
+        margin-top: 15px;
+        padding: 10px;
+        font-size: 14px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: bold;
+        background-color: #3b5998;
+        color: #fff;
+        border: none;
+        transition: background-color 0.3s ease;
+    }
+
+    .edit-btn:hover {
+        background-color: #2b4a7e;
+    }
+
+    /* Main content */
+    .main-content {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .header {
+        font-size: 15px;
+        color: #3b5998;
+        font-weight: bold;
+    }
+
+    .header-subtitle {
+        font-size: 14px;
+        color: #666;
+        margin-top: 5px;
+    }
+
+    /* Cards cho các phần Articles */
+    .articles-section {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 15px;
+    }
+
+    .article-card {
+        background-color: #e6efff;
+        padding: 15px;
+        border-radius: 8px;
+        text-align: center;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        font-size: 14px;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .article-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    .article-card h3 {
+        font-size: 16px;
+        margin-bottom: 10px;
+        color: #3b5998;
+    }
+
+    .article-card .detail-btn {
+        background-color: #3b5998;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        padding: 5px 10px;
+        font-size: 12px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .article-card .detail-btn:hover {
+        background-color: #2b4a7e;
+    }
+
+    /* Contribution section */
+    .contribution-section {
+        background-color: #e6efff;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contribution-title {
+        font-size: 20px;
+        color: #3b5998;
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+</style>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+  
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h1>Wikipedia</h1>
+      <img src="https://upload.wikimedia.org/wikipedia/en/8/80/Wikipedia-logo-v2.svg" alt="Wikipedia Logo">
+
+      <p align="center">Free knowledge for everyone</p>
+      <nav>
+        <ul>
+          <li><a href="./index.html">Home 🏠 </a></li>
+            <li><a href="./news.html">News 📰 </a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Law_of_cosines">Wiki 📘 </a></li>
+            <li><a href="./topic.html">Topics 📂 </a></li>
+            <li><a href="./comunity.html">Community 👥 </a></li>
+            <li><a href="./donation.html">Donation 💰 </a></li>
+            <li><a href="./contact.html">Contact 📞 </a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Wikipedia:About">About us ℹ️ </a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="header">
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Tìm kiếm..." oninput="updateSuggestions()">
+            <ul class="suggestions" id="suggestions-list"></ul>
+        </div>
+        <div class="icons">
+            <span class="notification-container">
+                <!-- Biểu tượng chuông thông báo -->
+                <span id="bell-icon" onclick="toggleNotifications()">🔔</span>
+                
+                <!-- Dropdown thông báo -->
+                <span class="notification-dropdown" id="notification-dropdown">
+                    <h4>Thông báo</h4>
+                    <ul id="notification-list">
+                        <!-- Các thông báo sẽ được thêm vào đây bằng JavaScript -->
+                    </ul>
+                    <button onclick="clearNotifications()" class="clear-btn">Xóa tất cả</button>
+            </span>
+            <span><a href="./profile.html">👤</a></span>
+            <span><a href="./start.html">⚙️</a></span>
+        </div>
+        <span class="date">Sep 29, 2024</span>
+      </header>
+
+      
+
+        <div class="profile-container">
+            <!-- Sidebar cho thông tin cá nhân -->
+            <div class="sidebar">
+                <div class="profile-image">100 x 100</div>
+                <div class="username">Emily</div>
+                <div class="personal-info">
+                    <p>Personal Information</p>
+                    <ul>
+                        <li>Educational background: Bachelor of Arts</li>
+                        <li>Job: Software Developer</li>
+                    </ul>
+                    <p>Contact</p>
+                    <ul>
+                        <li>Phone number: 0123-456-789</li>
+                        <li>Email: emily@example.com</li>
+                        <li>Joined: September 2024</li>
+                    </ul>
+                </div>
+                <textarea class="description" placeholder="Write a description about yourself"></textarea>
+                <button class="edit-btn">Edit Profile</button>
+            </div>
+        
+            <!-- Nội dung chính -->
+            <div class="main-content">
+                <div class="header">
+                    My Profile
+                    <div class="header-subtitle">0 followers | 0 following</div>
+                </div>
+            <br>
+        
+                <!-- Articles section -->
+                <div class="articles-section">
+                    <div class="article-card">
+                        <h3>Articles Read</h3>
+                        <p>...</p>
+                        <button class="detail-btn">More detail</button>
+                    </div>
+                    <div class="article-card">
+                        <h3>Articles Written</h3>
+                        <p>...</p>
+                        <button class="detail-btn">More detail</button>
+                    </div>
+                    <div class="article-card">
+                        <h3>Edits</h3>
+                        <p>...</p>
+                        <button class="detail-btn">More detail</button>
+                    </div>
+                    <div class="article-card">
+                        <h3>Shared with Me</h3>
+                        <p>...</p>
+                        <button class="detail-btn">More detail</button>
+                    </div>
+                    <div class="article-card">
+                        <h3>Articles Starred</h3>
+                        <p>...</p>
+                        <button class="detail-btn">More detail</button>
+                    </div>
+                </div>
+        
+                <!-- Contribution section -->
+                <div class="contribution-section">
+                    <div class="contribution-title">Contribution</div>
+                </div>
+            </div>
+        </div>
+        
+        
+</body>
+</html>

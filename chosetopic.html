@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chọn Topic Yêu Thích</title>
+    
+    <!-- CSS cho giao diện chọn topic -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f2f5;
+            color: #333;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            text-align: center;
+            animation: fadeIn 0.5s ease;
+        }
+
+        h2 {
+            color: #0073e6;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .topic-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+
+        .topic-item {
+            padding: 10px 20px;
+            background-color: #e6e6e6;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s, transform 0.2s;
+            user-select: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .topic-item.selected {
+            background-color: #0073e6;
+            color: white;
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 115, 230, 0.3);
+        }
+
+        .topic-item:hover {
+            background-color: #d4e0f4;
+        }
+
+        .save-button {
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            background-color: #0073e6;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            box-shadow: 0px 4px 8px rgba(0, 115, 230, 0.2);
+        }
+
+        .save-button:hover {
+            background-color: #005bb5;
+            box-shadow: 0px 6px 12px rgba(0, 91, 181, 0.3);
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Chọn Topic Yêu Thích</h2>
+    <div class="topic-list" id="topic-list">
+        <!-- Các topic sẽ được thêm vào đây bằng JavaScript -->
+    </div>
+    <button class="save-button" onclick="saveSelectedTopics()">Lưu Lựa Chọn</button>
+    <a href= "index.html"><Lưu class="save-button">Tiếp tục</button></ahref>
+</div>
+
+<!-- JavaScript để xử lý chọn topic -->
+<script>
+    // Danh sách các topic có sẵn
+    const topics = ["Công nghệ", "Khoa học", "Lịch sử", "Địa lý", "Chính trị", "Giáo dục", "Văn hóa", "Nghệ thuật", "Sức khỏe", "Kinh tế", "Thể thao", "Giải trí"];
+
+    // Lấy phần tử topic list
+    const topicList = document.getElementById("topic-list");
+
+    // Lưu các topic đã chọn
+    let selectedTopics = [];
+
+    // Khởi tạo danh sách topic
+    function loadTopics() {
+        topics.forEach(topic => {
+            const topicItem = document.createElement("div");
+            topicItem.classList.add("topic-item");
+            topicItem.textContent = topic;
+
+            // Xử lý sự kiện click để chọn topic
+            topicItem.addEventListener("click", () => {
+                toggleTopicSelection(topicItem, topic);
+            });
+
+            topicList.appendChild(topicItem);
+        });
+    }
+
+    // Chọn hoặc bỏ chọn topic
+    function toggleTopicSelection(element, topic) {
+        if (selectedTopics.includes(topic)) {
+            selectedTopics = selectedTopics.filter(t => t !== topic);
+            element.classList.remove("selected");
+        } else {
+            selectedTopics.push(topic);
+            element.classList.add("selected");
+        }
+    }
+
+    // Lưu các topic đã chọn
+    function saveSelectedTopics() {
+        // Ở đây có thể lưu vào localStorage hoặc gửi lên server nếu có backend
+        localStorage.setItem("selectedTopics", JSON.stringify(selectedTopics));
+        alert("Lưu thành công các topic yêu thích của bạn!");
+    }
+
+    // Khởi động danh sách topic khi trang tải
+    loadTopics();
+</script>
+
+</body>
+</html>
+
+

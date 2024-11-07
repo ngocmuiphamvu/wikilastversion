@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wikipedia Topic Page</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="search_notification.js">
+  <style>
+    /* Reset CSS */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #d9eafc;
+      display: flex;
+      height: 100vh;
+      color: #333;
+    }
+
+    /* Sidebar Navigation */
+    .sidebar {
+      width: px;
+      background-color: #fff;
+      padding: 20px 0;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .sidebar img {
+      width: 100px;
+      margin-bottom: 20px;
+    }
+
+    .sidebar a {
+      text-decoration: none;
+      color: #333;
+      display: flex;
+      align-items: center;
+      padding: 10px 15px;
+      width: 100%;
+      margin: 5px 0;
+      transition: background-color 0.3s;
+    }
+
+    .sidebar a:hover, .sidebar a.active {
+      background-color: #e2ecf8;
+      color: #2b4a9b;
+    }
+
+    .sidebar a img {
+      width: 24px;
+      margin-right: 10px;
+    }
+
+    /* Main Content */
+    .main-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+    }
+
+    .header img {
+      width: 150px;
+    }
+
+    .search-bar {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      margin: 0 20px;
+    }
+
+    .search-bar input {
+      width: 100%;
+      padding: 8px 12px;
+      border: 1px solid #ddd;
+      border-radius: 20px;
+      outline: none;
+    }
+
+    .header-icons img {
+      width: 24px;
+      margin-left: 15px;
+      cursor: pointer;
+    }
+
+    /* Topics Section */
+    .topics {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      background-color: #2b4a9b;
+      padding: 10px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .topics button {
+      color: white;
+      background-color: #41729f;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 20px;
+      margin: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .topics button:hover, .topics button.active {
+      background-color: #1d3a69;
+    }
+
+    /* News Section */
+    .content {
+      display: flex;
+    }
+
+    .news {
+      flex: 2;
+      padding: 10px;
+    }
+
+    .news h2 {
+      color: #2b4a9b;
+      margin-bottom: 10px;
+    }
+
+    .news-card {
+      background-color: #fff;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+      width: 100%;
+      max-width: 250px;
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    .news-card img {
+      width: 100%;
+      border-radius: 8px 8px 0 0;
+    }
+
+    .news-card h3 {
+      font-size: 16px;
+      color: #333;
+      margin: 10px 0;
+    }
+
+    .news-card p {
+      font-size: 14px;
+      color: #555;
+    }
+
+    .news-card a {
+      font-size: 14px;
+      color: #1e73be;
+      text-decoration: none;
+    }
+    .topic-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Wiki Section */
+    .wiki {
+      flex: 1;
+      padding: 10px;
+      background-color: #fff;
+      border-radius: 8px;
+      margin-left: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .wiki h2 {
+      color: #2b4a9b;
+      margin-bottom: 10px;
+    }
+
+    .wiki-item {
+      margin-bottom: 10px;
+    }
+
+    .wiki-item h3 {
+      font-size: 14px;
+      color: #333;
+    }
+
+    .wiki-item p {
+      font-size: 12px;
+      color: #555;
+    }
+    
+    .section-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #3b5998;
+    margin-bottom: 15px;
+    }
+    
+    a {
+    color: #3b5998;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    }
+    
+    a:hover {
+    color: #2b4a7e;
+    text-decoration: underline;
+    }
+    .wiki-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    }
+    
+    .wiki-item {
+    background-color: #ffffff;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+    }
+    
+    .wiki-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+    }
+    
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h1>Wikipedia</h1>
+      <p align="center">Free knowledge for everyone</p>
+      <nav>
+        <ul>
+          <li><a href="./index.html">Home 🏠 </a></li>
+            <li><a href="./news.html">News 📰 </a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Law_of_cosines">Wiki 📘 </a></li>
+            <li><a href="./topic.html">Topics 📂 </a></li>
+            <li><a href="./comunity.html">Community 👥 </a></li>
+            <li><a href="./donation.html">Donation 💰 </a></li>
+            <li><a href="./contact.html">Contact 📞 </a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Wikipedia:About">About us ℹ️ </a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="header">
+        <div class="search-container">
+          <input type="text" class="search-input" placeholder="Tìm kiếm..." oninput="updateSuggestions()">
+          <ul class="suggestions" id="suggestions-list"></ul>
+        </div>
+        <div class="icons">
+          <span class="notification-container">
+            <!-- Biểu tượng chuông thông báo -->
+            <span id="bell-icon" onclick="toggleNotifications()">🔔</span>
+            
+            <!-- Dropdown thông báo -->
+            <span class="notification-dropdown" id="notification-dropdown">
+                <h4>Thông báo</h4>
+                <ul id="notification-list">
+                    <!-- Các thông báo sẽ được thêm vào đây bằng JavaScript -->
+                </ul>
+                <button onclick="clearNotifications()" class="clear-btn">Xóa tất cả</button>
+            </span>
+          <span><a href="./profile.html">👤</a></span>
+          <span><a href="./start.html">⚙️</a></span>
+        </div>
+        <span class="date">Sep 29, 2024</span>
+      </header>
+
+      <!-- Topics Section -->
+    <div class="topics">
+      <button class="active">History</button>
+      <button>Politics</button>
+      <button>Sports</button>
+      <button>Business</button>
+      <button>Education</button>
+      <button>Science</button>
+      <button>Religion</button>
+      <button>Culture</button>
+      <button>Arts and Entertainment</button>
+      <button>Geography</button>
+      <button>Economics</button>
+      <button>Technology</button>
+      <button>Medicine and Health</button>
+    </div>
+
+    <!-- Content Section -->
+    <div class="content">
+      <!-- News Section -->
+      <div class="news">
+        <h2>News</h2>
+        <div class="news-card">
+          <h3>The Richter Scale’s California Origins</h3>
+          <p>Charles Richter worked with Beno Gutenberg to develop one of the first data-driven ways of comparing earthquakes.</p>
+          <a href="#">Read more</a>
+        </div>
+        <div class="news-card">
+          <h3>The Richter Scale’s California Origins</h3>
+          <p>Charles Richter worked with Beno Gutenberg to develop one of the first data-driven ways of comparing earthquakes.</p>
+          <a href="#">Read more</a>
+        </div>
+      </div>
+
+      <!-- Wiki Section -->
+      <div class="wiki">
+        <h2>Wiki</h2>
+        <div class="wiki-item">
+          <h3>1. Ho Chi Minh</h3>
+          <p>Hồ Chí Minh (born Nguyễn Sinh Cung 19 May 1890 – 2 September 1969), colloquially known as Uncle Ho (Bác Hồ) or just Uncle (Bác)...</p>
+        </div>
+        <div class="wiki-item">
+          <h3>2. Ho Chi Minh</h3>
+          <p>Hồ Chí Minh (born Nguyễn Sinh Cung 19 May 1890 – 2 September 1969), colloquially known as Uncle Ho (Bác Hồ) or just Uncle (Bác)...</p>
+        </div>
+        <div class="wiki-item">
+          <h3>3. Ho Chi Minh</h3>
+          <p>Hồ Chí Minh (born Nguyễn Sinh Cung 19 May 1890 – 2 September 1969), colloquially known as Uncle Ho (Bác Hồ) or just Uncle (Bác)...</p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
